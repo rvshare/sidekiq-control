@@ -1,0 +1,38 @@
+<!--<header class="row">
+  <div class="col-sm-5">
+    <h3><%#= t('Control') %></h3>
+  </div>
+</header>-->
+
+<div class="row header">
+  <div class="col-sm-7">
+    <h3><%= t('Jobs') %></h3>
+  </div>
+</div>
+
+<div class="table_container">
+  <table class="table table-hover table-bordered table-striped table-white">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Parameters</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td width="40%">
+          <%= job.name %>
+        </td>
+        <td width="50%">
+          <%= display_params(job.params) %>
+        </td>
+        <td width="10%">
+          <%= link_to("/control/#{job.name}", 'Run', class: 'btn btn-danger btn-xs', style: 'color: white;') %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

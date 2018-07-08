@@ -1,0 +1,68 @@
+<header class="row">
+  <div class="col-sm-5">
+    <h3><%= t('Control') %></h3>
+  </div>
+</header>
+
+<form action="<%= url_path('control') %>" method="post">
+  <%= csrf_tag %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Perform
+      </h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="job_name"><%= t('JobName') %></label>
+        <input type="text" class="form-control" id="job_name" name="job_name" value="<%= @job.name %>" readonly/>
+      </div>
+
+      <div class="form-group">
+        <label for="job_queue">Queue</label>
+        <input type="text" class="form-control" id="job_queue" name="job_queue" value="<%= @job.queue %>">
+      </div>
+
+      <% @job.params.each do |param| %>
+        <div class="form-group">
+          <label for="<%= param.name %>">
+            <%= param.name %><% if param.required? %><span style="color:red;font-size:small;">*</span><% end %>
+          </label>
+          <input class="form-control" id="<%= param.name %>" name="perform[<%= param.name %>]"/>
+        </div>
+      <% end %>
+
+      <input type="submit" class="btn btn-default" name="submit" value="<%= t('Run') %>"/>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="perform_in">Perform in</label>
+        <input class="form-control" id="perform_in" name="perform_in" placeholder="seconds"/>
+      </div>
+
+      <input type="submit" class="btn btn-danger" name="submit" value="<%= t('Schedule') %>"/>
+    </div>
+  </div>
+
+  <% if @job.other_perform_methods.any? %>
+    <div class="panel">
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="perform_method"><%= t('OtherMethods') %></label>
+          <select name="perform_method" id="perform_method" class="form-control">
+            <% @job.other_perform_methods.each do |meth| %>
+              <option value="<%= meth %>"><%= meth %></option>
+            <% end %>
+          </select>
+        </div>
+
+        <input type="submit" class="btn btn-danger" name="submit" value="<%= t('Perform') %>"/>
+      </div>
+    </div>
+  <% end %>
+</form>

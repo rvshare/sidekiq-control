@@ -1,0 +1,54 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.5
+
+  Exclude:
+    - 'bin/*'
+    - 'vendor/**/*'
+
+Style/Documentation:
+  # Skips checking to make sure top level modules / classes have a comment.
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  # Skips checking the style of children definitions at classes and modules.
+  Enabled: false
+
+Metrics/LineLength:
+  # Commonly used screens these days easily fit more than 80 characters.
+  Max: 120
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/AbcSize:
+  # 15 is sometimes difficult to stay under.
+  Max: 20
+
+Metrics/MethodLength:
+  # Too short methods lead to extraction of single-use methods, which can make
+  # the code easier to read (by naming things), but can also clutter the class
+  Max: 25
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  # No space makes the method definition shorter and differentiates
+  # from a regular assignment.
+  EnforcedStyle: no_space
+
+Style/SymbolArray:
+  # We do not need to support Ruby 1.9, so this is good to use.
+  Enabled: true
+
+Style/PercentLiteralDelimiters:
+  # Because percent literals are closer to method calls, use parenthesis.
+  PreferredDelimiters:
+      default: ()
+      '%i': '()'
+      '%w': '()'
+
+RSpec/NestedGroups:
+  Max: 5
