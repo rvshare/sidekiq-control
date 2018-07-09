@@ -10,7 +10,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">
-        Perform
+        <%= t('Perform') %>
       </h3>
     </div>
 
@@ -21,7 +21,7 @@
       </div>
 
       <div class="form-group">
-        <label for="job_queue">Queue</label>
+        <label for="job_queue"><%= t('Queue') %>></label>
         <input type="text" class="form-control" id="job_queue" name="job_queue" value="<%= @job.queue %>">
       </div>
 
@@ -41,8 +41,8 @@
   <div class="panel">
     <div class="panel-body">
       <div class="form-group">
-        <label for="perform_in">Perform in</label>
-        <input class="form-control" id="perform_in" name="perform_in" placeholder="seconds"/>
+        <label for="perform_in"><%= t('PerformIn') %></label>
+        <input class="form-control" id="perform_in" name="perform_in" placeholder="<%= t('seconds') %>>"/>
       </div>
 
       <input type="submit" class="btn btn-danger" name="submit" value="<%= t('Schedule') %>"/>

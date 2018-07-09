@@ -14,9 +14,9 @@
   <table class="table table-hover table-bordered table-striped table-white">
     <thead>
     <tr>
-      <th>Name</th>
-      <th>Parameters</th>
-      <th>Actions</th>
+      <th><%= t('Name') %>></th>
+      <th><%= t('Parameters') %></th>
+      <th><%= t('Actions') %></th>
     </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
           <%= display_params(job.params) %>
         </td>
         <td width="10%">
-          <%= link_to("/control/#{job.name}", 'Run', class: 'btn btn-danger btn-xs', style: 'color: white;') %>
+          <%= link_to("/control/#{job.name}", t('Perform'), class: 'btn btn-danger btn-xs', style: 'color:white;') %>
         </td>
       </tr>
     <% end %>
