@@ -9,6 +9,7 @@ module Sidekiq
       DEFAULT_IGNORED_CLASSES = %w(
         ApplicationJob
         Sidekiq::Batch::Callback
+        Rollbar::Delay::Sidekiq
         Searchkick::ReindexV2Job
         Searchkick::BulkReindexJob
         Searchkick::ProcessBatchJob
