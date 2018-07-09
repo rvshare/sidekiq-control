@@ -34,8 +34,7 @@ module Sidekiq
             when t('Schedule')
               job.trigger_in(params[:perform_in].to_f, job_params, queue)
             when t('Perform')
-              @output = job.job.send(params[:perform_method])
-              return erb(File.read(File.join(VIEW_PATH, 'index.erb')))
+              job.job.send(params[:perform_method])
             end
 
             redirect(url_path('control'))
