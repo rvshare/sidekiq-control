@@ -30,7 +30,7 @@ module Sidekiq
         end
 
         def cleanup(value)
-          value unless value.to_s.casecmp('nil').zero? && value.to_s.strip.empty?
+          value unless value.to_s.casecmp('nil').zero? || value.to_s.strip.empty?
         end
       end
     end
