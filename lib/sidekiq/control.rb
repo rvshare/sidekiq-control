@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 require 'sidekiq/web'
+
 require 'sidekiq/control/version'
 require 'sidekiq/control/configuration'
 require 'sidekiq/control/worker/instance'
 require 'sidekiq/control/worker/param'
 require 'sidekiq/control/web/application'
+require 'sidekiq/control/web/params_parser'
+require 'sidekiq/control/web/helpers'
 
 module Sidekiq
   module Control
