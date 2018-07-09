@@ -16,6 +16,7 @@ module Sidekiq
         end
 
         def value=(value)
+          value = value.is_a?(String) && value.empty? ? nil : value
           raise ArgumentError if required? && value.nil?
           @value = value
         end
