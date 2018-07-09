@@ -21,11 +21,11 @@
       </div>
 
       <div class="form-group">
-        <label for="job_queue"><%= t('Queue') %>></label>
+        <label for="job_queue"><%= t('Queue') %></label>
         <input type="text" class="form-control" id="job_queue" name="job_queue" value="<%= @job.queue %>">
       </div>
 
-      <% @job.params.each do |param| %>
+      <% @job.params.reject { |p| p.name.start_with?('_') }.each do |param| %>
         <div class="form-group">
           <label for="<%= param.name %>">
             <%= param.name %><% if param.required? %><span style="color:red;font-size:small;">*</span><% end %>
