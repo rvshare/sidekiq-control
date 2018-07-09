@@ -26,13 +26,12 @@ module Sidekiq
 
           app.post('/control') do
             job = Sidekiq::Control.jobs.find { |j| j.name == params[:job_name] }
-            job_params = get_job_params(job, params)
             queue = params[:job_queue]
             case params[:submit]
             when t('Run')
-              job.trigger(job_params, queue)
+              job.trigger(get_job_params(job, params), queue)
             when t('Schedule')
-              job.trigger_in(params[:perform_in].to_f, job_params, queue)
+              job.trigger_in(params[:perform_in].to_f, get_job_params(job, params), queue)
             when t('Perform')
               job.job.send(params[:perform_method])
             end
