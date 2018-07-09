@@ -17,7 +17,7 @@ module Sidekiq
         end
 
         def values
-          job.params.each do |param|
+          job.params.map do |param|
             param.value = extract_value(param.name)
           end
         end
