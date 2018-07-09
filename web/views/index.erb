@@ -10,11 +10,19 @@
   </div>
 </div>
 
+<% if @output %>
+  <div class="panel">
+    <div class="panel-body">
+      <pre>@output</pre>
+    </div>
+  </div>
+<% end %>
+
 <div class="table_container">
   <table class="table table-hover table-bordered table-striped table-white">
     <thead>
     <tr>
-      <th><%= t('Name') %>></th>
+      <th><%= t('Name') %></th>
       <th><%= t('Parameters') %></th>
       <th><%= t('Actions') %></th>
     </tr>
