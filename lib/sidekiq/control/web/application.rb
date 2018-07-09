@@ -26,7 +26,7 @@ module Sidekiq
 
           app.post('/control') do
             job = Sidekiq::Control.jobs.find { |j| j.name == params[:job_name] }
-            job_params = get_job_params(job, params[:perform])
+            job_params = get_job_params(job, params)
             queue = params[:job_queue]
             case params[:submit]
             when t('Run')
