@@ -15,6 +15,8 @@ module Sidekiq
         Searchkick::ProcessBatchJob
         Searchkick::ProcessQueueJob
         ActiveJob::QueueAdapters::SidekiqAdapter::JobWrapper
+        ActiveStorage::AnalyzeJob
+        ActiveStorage::PurgeJob
       ).freeze
 
       def initialize
@@ -34,16 +36,19 @@ module Sidekiq
 
       def select_class?(klass)
         return if Sidekiq::Control.config.ignored_classes.include?(klass.name)
+
         klass.public_instance_methods(false).include?(:perform)
       end
 
       def sidekiq_jobs
         return [] unless defined?(::Sidekiq::Worker)
+
         find_descendants_of(::Sidekiq::Worker)
       end
 
       def active_jobs
         return [] unless defined?(::ActiveJob::Base)
+
         find_descendants_of(::ActiveJob::Base)
       end
 

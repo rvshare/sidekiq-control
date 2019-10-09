@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Aaron Frase']
   spec.email         = ['afrase91@gmail.com']
 
-  spec.summary       = ''
-  spec.description   = ''
+  spec.summary       = 'Manually trigger background jobs'
+  spec.description   = spec.summary
   spec.homepage      = 'https://github.com/afrase/sidekiq-control'
   spec.license       = 'MIT'
 
@@ -26,9 +26,9 @@ Gem::Specification.new do |spec|
 
   spec.metadata['yard.run'] = 'yri' # use "yard" to build full HTML docs.
 
-  spec.add_dependency 'sidekiq', '~> 5.0'
+  spec.add_dependency 'sidekiq', '~> 6.0'
 
-  spec.add_development_dependency 'bundler', '~> 1.16'
+  spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'pry', '~> 0.11'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'

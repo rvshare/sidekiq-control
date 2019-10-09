@@ -11,7 +11,7 @@ module Sidekiq
         LOCALES_PATH = File.join(WEB_PATH, 'locales')
 
         # @param [Sidekiq::WebApplication] app
-        def self.registered(app) # rubocop:disable AbcSize
+        def self.registered(app) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
           app.helpers(Helpers)
 
           app.get('/control') do
@@ -26,17 +26,21 @@ module Sidekiq
 
           app.post('/control') do
             job = Sidekiq::Control.jobs.find { |j| j.name == params[:job_name] }
-            queue = params[:job_queue]
-            case params[:submit]
-            when t('Run')
-              job.trigger(get_job_params(job, params), queue)
-            when t('Schedule')
-              job.trigger_in(params[:perform_in].to_f, get_job_params(job, params), queue)
-            when t('Perform')
-              job.job.send(params[:perform_method])
-            end
+            begin
+              case params[:submit]
+              when t('Run')
+                job.trigger(get_job_params(job, params), params[:job_queue])
+              when t('Schedule')
+                job.trigger_in(params[:perform_in].to_f, get_job_params(job, params), params[:job_queue])
+              when t('Perform')
+                job.job.send(params[:perform_method])
+              end
 
-            redirect(url_path('control'))
+              redirect(url_path('control'))
+            rescue StandardError => e
+              @error = e
+              erb(File.read(File.join(VIEW_PATH, 'error.erb')))
+            end
           end
         end
       end

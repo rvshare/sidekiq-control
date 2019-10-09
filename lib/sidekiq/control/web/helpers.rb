@@ -20,6 +20,7 @@ module Sidekiq
 
         def get_job_params(job, params)
           return [] if params[:perform].nil?
+
           ParamsParser.values(job, params[:perform])
         end
 

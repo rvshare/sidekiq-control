@@ -19,8 +19,8 @@ YARD::Rake::YardocTask.new do |task|
   task.stats_options = ['--list-undoc']
 
   # has to be last
-  extra_files = %w[CODE_OF_CONDUCT.md LICENSE.txt]
+  extra_files = %w(CODE_OF_CONDUCT.md LICENSE.txt)
   task.options += ['-'] + extra_files
 end
 
-task default: %i[rubocop spec]
+task default: %i(rubocop spec)

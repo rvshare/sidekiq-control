@@ -17,6 +17,7 @@ module Sidekiq
 
         def value=(value)
           raise ArgumentError if required? && value.nil?
+
           @value = value
         end
 

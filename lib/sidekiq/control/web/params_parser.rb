@@ -26,6 +26,7 @@ module Sidekiq
 
         def extract_value(param_name)
           return if params[param_name].nil?
+
           cleanup(params[param_name])
         end
 

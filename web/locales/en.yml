@@ -11,3 +11,6 @@ en:
   Queue: Queue
   PerformIn: Perform in
   seconds: seconds
+  Error: Error
+  ErrorClass: Error Class
+  ErrorMessage: Error Message

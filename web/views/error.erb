@@ -1,0 +1,23 @@
+<h3><%= t('Error') %></h3>
+<div class="table_container">
+  <table class="error table table-bordered table-striped">
+    <tbody>
+      <tr>
+        <th><%= t('ErrorClass') %></th>
+        <td>
+          <code><%= @error.class %></code>
+        </td>
+      </tr>
+      <tr>
+        <th><%= t('ErrorMessage') %></th>
+        <td><%= h(@error.message) %></td>
+      </tr>
+      <tr>
+        <th><%= t('ErrorBacktrace') %></th>
+        <td>
+          <code><%= @error.backtrace.join('<br/>') %></code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

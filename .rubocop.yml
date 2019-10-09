@@ -52,3 +52,7 @@ Style/PercentLiteralDelimiters:
 
 RSpec/NestedGroups:
   Max: 5
+
+Naming/FileName:
+  Exclude:
+    - 'lib/sidekiq-control.rb'
