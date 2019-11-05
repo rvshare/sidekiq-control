@@ -1,6 +1,6 @@
 # Sidekiq::Control
 
-This gem adds a new tab to Sidekiq to allow starting jobs from the web UI (usually found at `/web/admin/sidekiq/control`)
+This gem adds a new tab to Sidekiq to allow starting jobs from the web UI
 
 ![image](https://user-images.githubusercontent.com/4623792/61005742-c0d11480-a336-11e9-8fbc-6623f246b599.png)
 
@@ -28,7 +28,7 @@ To include in dev/staging environment specify in your Gemfile
 
 ```ruby
 group :staging, :development do
-  gem 'sidekiq-control', github: 'rvshare/sidekiq-control'
+  gem 'sidekiq-control'
 end
 ```
 
